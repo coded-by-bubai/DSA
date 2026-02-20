@@ -1,4 +1,4 @@
-# 🏆 Largest Number from Array
+# 🏆 Formation of Largest Number from Array
 
 ## 📌 Problem Statement
 
