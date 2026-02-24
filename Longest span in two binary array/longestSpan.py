@@ -1,0 +1,23 @@
+def longestCommonSpan(a1, a2):
+    n = len(a1)
+    
+    prefix_sum = 0
+    max_len = 0
+    first_occurrence = {}
+    
+    for i in range(n):
+        prefix_sum += a1[i] - a2[i]
+        
+        # If prefix sum is zero, span from 0 to i
+        if prefix_sum == 0:
+            max_len = i + 1
+        
+        # If seen before, update max length
+        if prefix_sum in first_occurrence:
+            max_len = max(max_len, i - first_occurrence[prefix_sum])
+        else:
+            first_occurrence[prefix_sum] = i
+    
+    return max_len
+
+print(longestCommonSpan([0,1,0,0,0], [1,0,1,0,0]))
