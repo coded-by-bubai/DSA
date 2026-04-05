@@ -36,7 +36,8 @@ public:
                 minCost += wt;
 
                 for(auto it : adjl[u]){
-                    pq.push({it.first, it.second});
+                    if(!inMST[it.second])
+                        pq.push({it.first, it.second});
                 }
             }
             
