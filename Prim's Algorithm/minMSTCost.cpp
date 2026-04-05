@@ -14,9 +14,12 @@ public:
         this->V = V;
         adjl = new list<pair<int, int>> [V];
     }
-
+    ~Graph() {
+        delete[] adjl;
+    }
     void addEdge(int u, int v, int wt){
         adjl[u].push_back({wt, v});
+        adjl[v].push_back({wt, u});
     }
     int primMST(){
         vector<bool> inMST(V, false);
@@ -50,15 +53,10 @@ public:
 int main(){
     Graph g(4);
     g.addEdge(0,1,10);
-    g.addEdge(1,0,10);
     g.addEdge(0,3,30);
-    g.addEdge(3,0,30);
     g.addEdge(0,2,15);
-    g.addEdge(2,0,15);
     g.addEdge(1,3,40);
-    g.addEdge(3,1,40);
     g.addEdge(2,3,50);
-    g.addEdge(3,2,50);
 
     cout << "Cost of MST is : " << g.primMST();
     return 0;
